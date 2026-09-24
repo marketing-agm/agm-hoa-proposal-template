@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AGM HOA Services — Penny Lane</title>
+<link href="fonts/fonts.css" rel="stylesheet" />
+<style>
+/* AGM HOA Services brochure — US Letter, print-to-PDF.
+   Design system follows the AGM generic services flyer:
+   black hero, periwinkle brand blue, light serif + tracked sans labels. */
+@page{size:8.5in 11in;margin:0}
+:root{
+  --black:#060606;
+  --blue:#5B8AD6;
+  --blue-ink:#4A78C4;
+  --blue-wash:#EEF3FB;
+  --ink:#141414;
+  --body:#4B4F55;
+  --muted:#8A8F96;
+  --line:#D5D8DD;
+  --line-dark:rgba(255,255,255,.22);
+  --serif:'Newsreader', Georgia, serif;
+  --sans:'Inter', Helvetica, Arial, sans-serif;
+  --gx:58px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:var(--sans);color:var(--body);font-weight:300;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;position:relative;overflow:hidden;page-break-after:always;break-after:page;display:flex;flex-direction:column;background:#fff}
+.page:last-child{page-break-after:auto;break-after:auto}
+
+/* ---------- type ---------- */
+.serif{font-family:var(--serif);font-weight:300;color:var(--ink)}
+em,.accent{font-style:italic;color:var(--blue)}
+.kicker{font:500 8px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--blue-ink)}
+.label{font:600 7px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.h-sect{font-family:var(--serif);font-weight:300;font-size:22px;line-height:1.28;color:var(--ink);letter-spacing:-.003em}
+.h-col{font-family:var(--serif);font-weight:400;font-size:16px;line-height:1.2;color:var(--ink);margin-bottom:9px}
+p.body{font-size:9px;line-height:1.72;color:var(--body)}
+.inc{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.inc .label{margin-bottom:6px}
+.inc p{font-size:7.8px;line-height:1.7;color:var(--muted);letter-spacing:.01em}
+.pad{padding-left:var(--gx);padding-right:var(--gx)}
+.cols{display:grid;gap:34px}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr);gap:24px}
+.c2{grid-template-columns:repeat(2,1fr)}
+
+/* ---------- hero (black) ---------- */
+.hero{background:var(--black);color:#fff;padding:44px var(--gx) 34px}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:33px;line-height:1.14;color:#fff;letter-spacing:-.005em}
+.hero h1 em{color:#7FA6E6}
+.hero .sub{font-size:10px;line-height:1.6;color:rgba(255,255,255,.8);margin-top:14px;max-width:470px}
+.logo{width:150px;flex:none;margin-top:4px}
+.logo img{width:100%;display:block}
+.prepared{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:7px 12px;border:1px solid rgba(255,255,255,.28);border-radius:2px}
+.prepared span{font:500 7px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.prepared b{font-family:var(--serif);font-weight:400;font-size:12px;color:#fff;letter-spacing:.01em}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;margin-top:26px;padding-top:22px;border-top:1px solid var(--line-dark)}
+.stat{padding-right:18px;margin-right:18px;border-right:1px solid var(--line-dark)}
+.stat:last-child{border-right:0;margin-right:0;padding-right:0}
+.stat .n{font-family:var(--serif);font-weight:300;font-size:25px;line-height:1;color:#fff}
+.stat .t{font:500 7px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:10px}
+.stat.lines{font:600 7.2px/1.8 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;align-self:center}
+
+/* ---------- section intro ---------- */
+.intro{padding-top:30px}
+.intro .kicker{margin-bottom:12px}
+.intro .h-sect{max-width:640px}
+.lead{font-size:9.4px;line-height:1.75;color:var(--body);margin-top:12px;max-width:640px}
+
+/* ---------- photos ---------- */
+.row-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.row-head .h-col{margin:0;font-size:15px}
+.row-head .loc{font:500 7px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.photos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ph{position:relative;height:104px;overflow:hidden;background:#ddd}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0) 58%)}
+.ph .cap{position:absolute;left:10px;bottom:8px;z-index:1;color:#fff}
+.ph .cap b{display:block;font-family:var(--serif);font-weight:400;font-size:11.5px}
+.ph .cap span{font:500 6px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+
+/* ---------- timeline ---------- */
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:14px}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:var(--line)}
+.tl{position:relative;padding-top:18px;padding-right:14px}
+.tl::before{content:"";position:absolute;top:0;left:0;width:9px;height:9px;border-radius:50%;background:#fff;border:1.5px solid var(--blue)}
+.tl:last-child::before{background:var(--blue)}
+.tl .yr{font:600 6.8px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--blue-ink)}
+.tl .nm{font-family:var(--serif);font-size:12px;color:var(--ink);margin:6px 0 4px;line-height:1.2}
+.tl p{font-size:7.6px;line-height:1.6;color:var(--muted)}
+
+/* ---------- cards / grids ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.item{padding:16px 0;border-top:1px solid var(--line)}
+.item .num{font:600 7px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:9px}
+.item .h-col{font-size:15.5px;margin-bottom:6px}
+.tags{margin-top:8px;font-size:7.9px;line-height:1.7;color:var(--muted)}
+.strip{background:var(--blue-wash);padding:13px 18px;display:flex;align-items:center;gap:18px;border-left:2px solid var(--blue)}
+.strip .label{color:var(--blue-ink);flex:none}
+.strip p{font-size:8.4px;line-height:1.6;color:var(--ink);font-weight:400}
+
+/* ---------- dark band ---------- */
+.band{background:var(--black);color:#fff;padding:30px var(--gx) 32px}
+.band .kicker{color:#7FA6E6}
+.band .h-sect{color:#fff;margin-top:12px}
+.band .h-sect em{color:#7FA6E6}
+.band .lead{color:rgba(255,255,255,.72)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:22px}
+.step{border-top:1px solid rgba(255,255,255,.3);padding-top:12px}
+.step .num{font-family:var(--serif);font-weight:300;font-size:24px;color:#7FA6E6;line-height:1}
+.step .st{font:600 6.8px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:10px 0 6px}
+.step .h-col{color:#fff;font-size:13px;margin-bottom:6px}
+.step p{font-size:8.2px;line-height:1.65;color:rgba(255,255,255,.7)}
+.band-note{margin-top:20px;padding-top:12px;border-top:1px solid var(--line-dark);font-size:7.8px;line-height:1.6;color:rgba(255,255,255,.6)}
+
+/* ---------- quote / outcome ---------- */
+.outcome{border-left:2px solid var(--blue);padding:2px 0 2px 20px}
+.outcome .label{color:var(--blue-ink);margin-bottom:8px}
+.outcome q{font-family:var(--serif);font-style:italic;font-weight:300;font-size:16px;line-height:1.45;color:var(--ink);quotes:none}
+
+/* ---------- financial feature ---------- */
+.split{display:grid;grid-template-columns:1.5fr 1fr;gap:26px;align-items:stretch}
+.reports{background:var(--blue-wash);padding:18px 20px}
+.reports .label{color:var(--blue-ink);margin-bottom:10px}
+.reports ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.reports li{font-size:8.6px;color:var(--ink);font-weight:400;padding-left:12px;position:relative;line-height:1.5}
+.reports li::before{content:"";position:absolute;left:0;top:6px;width:5px;height:1px;background:var(--blue)}
+.big{background:var(--black);color:#fff;padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
+.big .n{font-family:var(--serif);font-weight:300;font-size:40px;line-height:1;color:#fff}
+.big .n sup{font-size:.45em;vertical-align:top;position:relative;top:.25em;margin-left:2px;color:#7FA6E6}
+.big p{font-size:8px;line-height:1.6;color:rgba(255,255,255,.72);margin-top:8px}
+
+/* ---------- facilities ---------- */
+.fac{display:grid;grid-template-columns:230px 1fr;gap:30px}
+.fac-img{position:relative;overflow:hidden;background:#ddd}
+.fac-img img{width:100%;height:100%;object-fit:cover;display:block}
+.fac-list .item:first-child{border-top:0;padding-top:0}
+.fac-list .item{padding:11px 0}
+.fac-list .item .h-col{font-size:13.5px;margin-bottom:4px}
+.fac-list .tags{margin-top:5px}
+.bluebar{background:var(--blue);color:#fff;padding:15px 22px;display:flex;align-items:center;gap:22px}
+.bluebar .n{font-family:var(--serif);font-weight:300;font-size:28px;line-height:1;flex:none}
+.bluebar .label{color:#fff;margin-bottom:4px}
+.bluebar p{font-size:8.6px;line-height:1.55;color:rgba(255,255,255,.92)}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:1fr 1.6fr;gap:30px}
+.pm{background:var(--black);color:#fff;padding:18px 20px}
+.pm .label{color:#7FA6E6}
+.pm .h-col{color:#fff;font-size:18px;margin:10px 0 8px}
+.pm p{font-size:8.4px;line-height:1.65;color:rgba(255,255,255,.74)}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+.role{padding:10px 0;border-top:1px solid var(--line)}
+.role:nth-child(-n+2){border-top:0;padding-top:0}
+.role .h-col{font-size:13px;margin-bottom:4px}
+.role p{font-size:8.2px;line-height:1.6;color:var(--muted)}
+
+/* ---------- transition ---------- */
+.trans{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.tr{padding:12px 12px 0 0;border-top:2px solid var(--line);position:relative}
+.tr::before{content:"";position:absolute;top:-2px;left:0;width:26px;height:2px;background:var(--blue)}
+.tr .num{font:600 6.8px/1 var(--sans);letter-spacing:.22em;color:var(--blue-ink);margin-bottom:6px}
+.tr b{display:block;font-family:var(--serif);font-weight:400;font-size:11.5px;line-height:1.25;color:var(--ink)}
+
+.scope{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.scope div{font-size:8.4px;line-height:1.4;color:var(--ink);font-weight:400;padding:9px 10px 9px 16px;border-bottom:1px solid var(--line);position:relative}
+.scope div::before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+/* ---------- footers ---------- */
+.foot{margin-top:auto;padding:14px var(--gx);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);font:500 6.8px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.foot b{color:var(--ink);font-weight:600}
+.cta{margin-top:auto;background:var(--blue);color:#fff;padding:26px var(--gx);display:grid;grid-template-columns:1.3fr 1fr auto;gap:26px;align-items:center}
+.cta .kicker{color:#fff;margin-bottom:10px}
+.cta h3{font-family:var(--serif);font-weight:300;font-size:21px;line-height:1.25;color:#fff}
+.cta .ct b{display:block;font:600 10px/1 var(--sans);color:#fff;margin-bottom:10px}
+.cta .ct div{font-size:8.6px;line-height:1.85;color:rgba(255,255,255,.92)}
+.qr{width:72px;height:72px;background:#fff;padding:5px}
+.qr img{width:100%;height:100%;display:block}
+.sp-s{flex:1 0 14px}.sp-m{flex:1.4 0 22px}.sp-l{flex:2 0 28px}
+.page>.foot,.page>.cta{margin-top:0}
+.page>.end{flex:.6 0 26px}
+</style>
+</head>
+<body>
+
+<!-- =========================== PAGE 1 =========================== -->
+<section class="page">
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <h1>From Governance to <em>Stewardship</em>—<br/>Under One Roof.</h1>
+        <p class="sub">AGM HOA Services — governance support, financial oversight, facilities, and technology, delivered with transparency and under Board direction.</p>
+        <div class="prepared"><span>Prepared for</span><b>Penny Lane · 170th Ave NE</b></div>
+      </div>
+      <div class="logo"><img src="../assets/agm-logo-white.svg" alt="AGM Real Estate Group" /></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">$1B</div><div class="t">Assets managed</div></div>
+      <div class="stat"><div class="n">200+</div><div class="t">Properties</div></div>
+      <div class="stat"><div class="n">1998</div><div class="t">Founded · PNW</div></div>
+      <div class="stat lines">Governance · Financial Management · Compliance · Facilities · Technology</div>
+    </div>
+  </header>
+
+  <div class="pad intro">
+    <div class="kicker">What we do</div>
+    <h2 class="h-sect">Full-service community association management — so your Board can focus on <em>the community it serves.</em></h2>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad cols c3">
+    <div>
+      <h3 class="h-col">Governance &amp; Board Support</h3>
+      <p class="body">Structured governance support through meeting coordination, documentation management, and operational guidance — aligned with the Association’s Governing Documents.</p>
+      <div class="inc"><div class="label">Includes</div><p>Board meetings · Board packets · Notices &amp; proxies · Minutes archiving · Compliance management</p></div>
+    </div>
+    <div>
+      <h3 class="h-col">Financial Management</h3>
+      <p class="body">Full accounting and financial services designed to ensure transparency, accuracy, and compliance with Association financial and fiduciary obligations.</p>
+      <div class="inc"><div class="label">Includes</div><p>Budget development · Reserve alignment · Billing &amp; collections · Monthly reporting · Audit &amp; tax coordination</p></div>
+    </div>
+    <div>
+      <h3 class="h-col">Facilities &amp; Capital Projects</h3>
+      <p class="body">Proactive maintenance, vendor oversight, and capital planning that preserve asset condition, reduce deferred costs, and align with reserve strategy.</p>
+      <div class="inc"><div class="label">Includes</div><p>Preventative maintenance · Inspections · Competitive bids · Capital planning · 24/7 emergency response</p></div>
+    </div>
+  </div>
+
+  <div class="pad sp-l"></div>
+  <div class="pad">
+    <div class="row-head"><h3 class="h-col">Featured Assets Under Management</h3><div class="loc">Greater Seattle · Puget Sound</div></div>
+    <div class="photos">
+      <div class="ph"><img src="img/bellevue.jpg" alt="" /><div class="cap"><b>Clover Building</b><span>Bellevue, WA</span></div></div>
+      <div class="ph"><img src="img/fremont.jpg" alt="" /><div class="cap"><b>Fremont</b><span>Seattle, WA</span></div></div>
+      <div class="ph"><img src="img/queen-anne.jpg" alt="" /><div class="cap"><b>Niwa</b><span>Queen Anne, Seattle</span></div></div>
+      <div class="ph"><img src="img/marysville.jpg" alt="" /><div class="cap"><b>Quil Crossing</b><span>Marysville, WA</span></div></div>
+    </div>
+  </div>
+
+  <div class="pad sp-l"></div>
+  <div class="pad">
+    <div class="kicker">Our history</div>
+    <div class="timeline">
+      <div class="tl"><div class="yr">1998</div><div class="nm">Founded</div><p>Established in the Pacific Northwest as a commercial real estate syndication firm</p></div>
+      <div class="tl"><div class="yr">Expansion</div><div class="nm">Phillips Real Estate</div><p>Acquisition broadened the portfolio to multifamily and HOA properties</p></div>
+      <div class="tl"><div class="yr">Partnership</div><div class="nm">Lee &amp; Associates</div><p>Strategic partnership expanded capabilities and national reach</p></div>
+      <div class="tl"><div class="yr">Expansion</div><div class="nm">MaKensay</div><p>Added downtown Seattle commercial and historic properties</p></div>
+      <div class="tl"><div class="yr">Today</div><div class="nm">Fully Integrated</div><p>$1B AUM and 200+ properties — management, investment, and construction</p></div>
+    </div>
+  </div>
+
+  <div class="end"></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane</span><span>agmrealestategroup.com &nbsp;·&nbsp; 01</span></div>
+</section>
+
+<!-- =========================== PAGE 2 =========================== -->
+<section class="page">
+  <div class="pad intro" style="padding-top:44px">
+    <div class="kicker">01 &nbsp;—&nbsp; Governance &amp; Board Support</div>
+    <h2 class="h-sect">Organized governance, informed decision-making, and <em>continuity of records</em> under Board direction.</h2>
+    <div class="cols c2" style="gap:34px;margin-top:14px">
+      <p class="body">AGM attends regularly scheduled Board meetings monthly, or more frequently at the Board’s request, and coordinates special meetings as needed to address operational matters, capital projects, or regulatory requirements.</p>
+      <p class="body">We maintain familiarity with the Washington Condominium Act (RCW 64.34) and the Washington Uniform Common Interest Ownership Act (RCW 64.90), and help the Board understand its fiduciary and operational responsibilities.</p>
+    </div>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad grid2">
+    <div class="item">
+      <div class="num">Structure</div>
+      <h3 class="h-col">Board Governance &amp; Structure</h3>
+      <p class="body">Review of Board composition and operating procedures to ensure compliance with the Governing Documents and CC&amp;Rs.</p>
+      <div class="tags">Board composition · Officer roles · Terms &amp; elections · Voting practices</div>
+    </div>
+    <div class="item">
+      <div class="num">Preparation</div>
+      <h3 class="h-col">Meeting Preparation</h3>
+      <p class="body">A regular meeting schedule and framework that supports consistent governance, with Board packets organizing updates, action items, and documentation.</p>
+      <div class="tags">Meeting schedule · Board packets · Action items · Supporting documents</div>
+    </div>
+    <div class="item">
+      <div class="num">Meetings</div>
+      <h3 class="h-col">Board &amp; Association Meetings</h3>
+      <p class="body">Meeting notices distributed in accordance with Governing Documents and state statutes; proxies managed and minutes archived.</p>
+      <div class="tags">Meeting notices · Proxy management · Minutes archiving</div>
+    </div>
+    <div class="item">
+      <div class="num">Compliance</div>
+      <h3 class="h-col">Violations &amp; Compliance</h3>
+      <p class="body">A structured process aligning enforcement with the Governing Documents and Washington statutes, from policy review through resolution.</p>
+      <div class="tags">Policy review · Intake · Inspection · Notices · Fines, waivers &amp; appeals</div>
+    </div>
+  </div>
+
+  <div class="pad" style="margin-top:4px"><div class="strip"><div class="label">Board packet</div><p>Agenda &nbsp;·&nbsp; Management Report &nbsp;·&nbsp; Monthly Financial Report, delivered by the 15th</p></div></div>
+
+  <div class="sp-l"></div>
+  <div class="band">
+    <div class="kicker">Compliance process</div>
+    <h2 class="h-sect">Consistent, documented enforcement — <em>with the Board in control.</em></h2>
+    <p class="lead">Weekly compliance inspections cover front yards, visible side yards, home exteriors, and parking. Board-approved violations identified by Board members are processed under the same Compliance Policy.</p>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><div class="st">Review</div><h4 class="h-col">Open Violation Records</h4><p>An accurate picture of the active compliance pipeline between inspections.</p></div>
+      <div class="step"><div class="num">02</div><div class="st">Verification</div><h4 class="h-col">Status Confirmation</h4><p>After the cure period, the Board confirms whether a violation remains open or is resolved.</p></div>
+      <div class="step"><div class="num">03</div><div class="st">Release</div><h4 class="h-col">Compliance Notice</h4><p>Upon Board approval, AGM releases notices to the Homeowner per the Compliance Policy.</p></div>
+      <div class="step"><div class="num">04</div><div class="st">Closure</div><h4 class="h-col">Tracking &amp; Closure</h4><p>The violation log is updated to reflect confirmed compliance or escalation.</p></div>
+    </div>
+    <div class="band-note">Assessment of fines and final enforcement decisions remain the sole responsibility of the Board.</div>
+  </div>
+
+  <div class="end"></div>
+  <div class="foot" style="border-top:0"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane</span><span>agmrealestategroup.com &nbsp;·&nbsp; 02</span></div>
+</section>
+
+<!-- =========================== PAGE 3 =========================== -->
+<section class="page">
+  <div class="pad intro" style="padding-top:44px">
+    <div class="kicker">02 &nbsp;—&nbsp; Financial Management &amp; Fiduciary Oversight</div>
+    <h2 class="h-sect">Full accounting and financial services built on <em>transparency, accuracy, and compliance.</em></h2>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad cols c4">
+    <div>
+      <h3 class="h-col" style="font-size:14px">Financial Planning</h3>
+      <p class="body">Budget development, cash flow forecasting, and reserve alignment for short-term stability and long-term planning.</p>
+    </div>
+    <div>
+      <h3 class="h-col" style="font-size:14px">Financial Operations</h3>
+      <p class="body">Billing, collections, invoice processing, and vendor payments — with dollar-threshold approval tiers set by the Board.</p>
+    </div>
+    <div>
+      <h3 class="h-col" style="font-size:14px">Reporting &amp; Records</h3>
+      <p class="body">Secure digital records, reports formatted to Board preference, and year-end coordination with the Association’s CPA.</p>
+    </div>
+    <div>
+      <h3 class="h-col" style="font-size:14px">Banking &amp; Controls</h3>
+      <p class="body">Segregated bank accounts, separation of duties, Board approval protocols, and monthly reconciliations.</p>
+    </div>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad split">
+    <div class="reports">
+      <div class="label">Monthly reports include</div>
+      <ul>
+        <li>Balance Sheet</li><li>Income &amp; Expense</li>
+        <li>Budget vs. Actual</li><li>A/R &amp; A/P Report</li>
+        <li>Check Register</li><li>Bank Reconciliation</li>
+      </ul>
+    </div>
+    <div class="big">
+      <div class="n">15<sup>th</sup></div>
+      <p>Monthly financial reports delivered to the Board via the Board Portal by the 15th of every month.</p>
+    </div>
+  </div>
+
+  <div class="pad sp-l"></div>
+  <div class="pad" style="border-top:1px solid var(--line);margin:0 var(--gx);padding:0"></div>
+  <div class="pad intro" style="padding-top:28px">
+    <div class="kicker">03 &nbsp;—&nbsp; Facilities, Maintenance &amp; Capital Projects</div>
+    <h2 class="h-sect">Protecting asset value through <em>proactive maintenance</em> and long-term capital planning.</h2>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad fac">
+    <div class="fac-img"><img src="img/marysville.jpg" alt="" /></div>
+    <div class="fac-list">
+      <div class="item">
+        <h3 class="h-col">Preventative Maintenance</h3>
+        <p class="body">Proactive maintenance and repair oversight to reduce deferred maintenance and unplanned costs.</p>
+        <div class="tags">Maintenance coordination · Service requests · Maintenance records</div>
+      </div>
+      <div class="item">
+        <h3 class="h-col">Inspections &amp; Documentation</h3>
+        <p class="body">Regular inspections by an AGM Building Engineer, with photographic records and systems review.</p>
+        <div class="tags">Monthly inspections · Systems verification · Work order recommendations</div>
+      </div>
+      <div class="item">
+        <h3 class="h-col">Vendor &amp; Bid Oversight</h3>
+        <p class="body">Bid procurement, compliance review, and performance oversight for quality and budget alignment.</p>
+        <div class="tags">Competitive bids · Insurance &amp; licensing · Performance review</div>
+      </div>
+      <div class="item">
+        <h3 class="h-col">Capital Planning &amp; Coordination</h3>
+        <p class="body">Capital plans that align reserve studies, budgets, and project needs for long-term preservation.</p>
+        <div class="tags">Multi-year forecasting · Prioritization · Project oversight</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad"><div class="bluebar"><div class="n">24/7</div><div><div class="label">After-hours support</div><p>On-call emergency response, vendor dispatch, and authorized protocols per the management agreement.</p></div></div></div>
+
+  <div class="end"></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane</span><span>agmrealestategroup.com &nbsp;·&nbsp; 03</span></div>
+</section>
+
+<!-- =========================== PAGE 4 =========================== -->
+<section class="page">
+  <div class="pad intro" style="padding-top:44px">
+    <div class="kicker">04 &nbsp;—&nbsp; Tools &amp; Technology</div>
+    <h2 class="h-sect">Real-time visibility for the Board. <em>Secure, easy access for every owner.</em></h2>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad cols c3">
+    <div>
+      <h3 class="h-col">Board Visibility</h3>
+      <p class="body">A real-time financial dashboard and online reporting provide visibility into key activity between meetings.</p>
+      <div class="inc"><div class="label">Includes</div><p>Financial dashboard · 24/7 reporting · Electronic approvals · Archived history</p></div>
+    </div>
+    <div>
+      <h3 class="h-col">Secure Portals</h3>
+      <p class="body">Owner and Board portals that promote accessibility, transparency, and responsive communication.</p>
+      <div class="inc"><div class="label">Includes</div><p>Online payments · Maintenance &amp; architectural requests · Community calendar</p></div>
+    </div>
+    <div>
+      <h3 class="h-col">Records &amp; Security</h3>
+      <p class="body">Association records kept in a centralized digital system, protected by secure management platforms.</p>
+      <div class="inc"><div class="label">Includes</div><p>Centralized archive · Access-controlled storage · Cybersecurity · Data backups</p></div>
+    </div>
+  </div>
+
+  <div class="pad sp-m"></div>
+  <div class="pad"><div class="strip"><div class="label">Dashboard metrics</div><p>Budget comparison &nbsp;·&nbsp; Operating &amp; reserve balances &nbsp;·&nbsp; Owner delinquencies &nbsp;·&nbsp; Maintenance service requests</p></div></div>
+
+  <div class="pad sp-l"></div>
+  <div class="pad" style="border-top:1px solid var(--line);margin:0 var(--gx);padding:0"></div>
+  <div class="pad intro" style="padding-top:26px">
+    <div class="kicker">05 &nbsp;—&nbsp; Your Management Team</div>
+  </div>
+  <div class="pad sp-s"></div>
+  <div class="pad team">
+    <div class="pm">
+      <div class="label">Primary point of contact</div>
+      <h3 class="h-col">Property Manager</h3>
+      <p>Serves as the primary point of contact for the Board and owners, overseeing day-to-day operations and governance compliance.</p>
+    </div>
+    <div class="roles">
+      <div class="role"><h4 class="h-col">Property Operations Associate</h4><p>Assists in day-to-day operations</p></div>
+      <div class="role"><h4 class="h-col">Property Accountant</h4><p>Property-level accounting and financial reporting</p></div>
+      <div class="role"><h4 class="h-col">Project Manager · Construction</h4><p>Leads capital projects with a focus on cost control and quality</p></div>
+      <div class="role"><h4 class="h-col">Maintenance Technician</h4><p>Preventive maintenance and emergency response</p></div>
+    </div>
+  </div>
+
+  <div class="pad sp-l"></div>
+  <div class="pad">
+    <div class="row-head"><h3 class="h-col">Comprehensive Management Scope</h3><div class="loc">Included in full-service management</div></div>
+    <div class="scope">
+      <div>Meeting preparation &amp; documentation</div><div>Board meeting attendance</div><div>Annual meeting &amp; budget ratification</div><div>Reserve study coordination</div>
+      <div>Operating budget &amp; forecasting</div><div>Accounts payable &amp; receivable</div><div>Monthly financial reporting</div><div>Audit &amp; tax preparation coordination</div>
+      <div>Insurance renewal coordination</div><div>Maintenance &amp; vendor oversight</div><div>Capital project management</div><div>Governance &amp; compliance enforcement</div>
+    </div>
+  </div>
+
+  <div class="pad sp-l"></div>
+  <div class="pad">
+    <div class="kicker" style="margin-bottom:12px">A seamless transition</div>
+    <div class="trans">
+      <div class="tr"><div class="num">01</div><b>Governing document review</b></div>
+      <div class="tr"><div class="num">02</div><b>Records &amp; systems setup</b></div>
+      <div class="tr"><div class="num">03</div><b>Financial framework</b></div>
+      <div class="tr"><div class="num">04</div><b>Vendor &amp; property review</b></div>
+      <div class="tr"><div class="num">05</div><b>Portal &amp; reporting launch</b></div>
+    </div>
+  </div>
+
+  <div class="end"></div>
+  <div class="cta">
+    <div>
+      <div class="kicker">Let’s talk</div>
+      <h3>Schedule a conversation with our HOA services team.</h3>
+    </div>
+    <div class="ct">
+      <b>AGM Real Estate Group</b>
+      <div>www.agmrealestategroup.com<br/>businessdevelopment@agmrealestategroup.com<br/>206.622.8600<br/>12330 Northup Way, Bellevue, WA 98005</div>
+    </div>
+    <div class="qr"><img src="qr.svg" alt="QR code to agmrealestategroup.com" /></div>
+  </div>
+</section>
+
+</body>
+</html>
