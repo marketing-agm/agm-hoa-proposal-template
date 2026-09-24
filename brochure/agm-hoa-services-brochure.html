@@ -129,20 +129,6 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
 .role h5{font:600 10.6px/1.35 var(--sans);color:var(--ink);margin-bottom:5px}
 .role p{font-size:9.8px;line-height:1.55;color:var(--muted)}
 
-/* ---------- compliance band ---------- */
-.page.dark{background:var(--black)}
-.band{background:var(--black);color:#fff;padding:52px var(--gx) 30px;flex:1 1 auto;display:flex;flex-direction:column}
-.band .eyebrow{color:var(--blue-on-dark)}
-.band .title{color:#fff;font-size:31px}
-.band .title .hl{color:var(--blue-on-dark)}
-.band .lead{color:var(--on-dark);font-size:11px}
-.band .bnote{margin-top:32px;padding:16px 20px;border-left:3px solid var(--blue-on-dark);background:rgba(255,255,255,.06);font-size:9.8px;line-height:1.6;color:var(--on-dark)}
-.steps{display:grid;grid-template-columns:1fr 1fr;gap:34px 40px;margin-top:auto;padding-top:34px}
-.step{border-top:1px solid rgba(255,255,255,.42);padding-top:18px}
-.step .num{font-family:var(--serif);font-size:44px;line-height:1;color:var(--blue-on-dark);margin-bottom:14px}
-.step .sk{font:600 7.8px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--blue-on-dark)}
-.step h5{font:600 12.4px/1.3 var(--sans);color:#fff;margin:10px 0 8px}
-.step p{font-size:10.4px;line-height:1.68;color:var(--on-dark)}
 
 .fac-photos{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
 .fac-photos .tile{height:210px;overflow:hidden;background:#ddd}
@@ -162,8 +148,6 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
 /* ---------- footers ---------- */
 .foot{padding:14px var(--gx);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);font:600 7.6px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .foot b{color:var(--ink)}
-.dark .foot{border-top:1px solid var(--line-dark);color:var(--on-dark-2)}
-.dark .foot b{color:#fff}
 .closing{background:var(--black);color:#fff;padding:22px var(--gx);display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center}
 .closing img.logo{height:32px;display:block}
 .closing .ct{font-size:10.4px;line-height:1.75;color:var(--on-dark);border-left:1px solid var(--line-dark);padding-left:24px}
@@ -315,21 +299,28 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
 </section>
 
 <!-- =========================== PAGE 5 · INTERIM COMPLIANCE REVIEW =========================== -->
-<section class="page dark">
-  <div class="band">
-    <div class="sec-grid">
-      <div><div class="eyebrow">04A · Compliance</div><h2 class="title">Interim <span class="hl">Compliance Review</span></h2></div>
-      <p class="lead">In addition to AGM’s inspections, the Board may provide AGM with identified violations by Board members, which have been approved by the Board for processing in accordance with the Association’s Compliance Policy.</p>
-    </div>
-    <div class="bnote">Compliance inspections are performed weekly and include observation of front yards, visible side yards, exterior of home, and parking. Following the inspection, a warning letter will be issued, and the violation will then be processed in compliance with the enclosed compliance procedure.</div>
-    <div class="steps">
-      <div class="step"><div class="num">01</div><div class="sk">Review</div><h5>Open Violation Records</h5><p>Review open violation records to maintain an accurate picture of the active compliance pipeline between inspections.</p></div>
-      <div class="step"><div class="num">02</div><div class="sk">Verification</div><h5>Compliance Status Confirmation</h5><p>Following the cure period, the Board will inform AGM whether the violation remains open or the Homeowner has achieved compliance.</p></div>
-      <div class="step"><div class="num">03</div><div class="sk">Release</div><h5>Compliance Notice</h5><p>Upon approval from the Board, AGM will release approved violation notices to the Homeowner in accordance with the Compliance Policy. Assessment of fines and final enforcement decisions remain the sole responsibility of the Board.</p></div>
-      <div class="step"><div class="num">04</div><div class="sk">Tracking &amp; Closure</div><h5>Log Updates &amp; Compliance Confirmation</h5><p>The Board will update the violation log to reflect either confirmed compliance and closure, or that the violation remains open and is being escalated under the Compliance Policy.</p></div>
-    </div>
+<section class="page spread">
+  <div class="pad sec">
+    <div class="eyebrow">04A · Compliance</div>
+    <h2 class="title">Interim <span class="hl">Compliance Review</span></h2>
+    <p class="lead">In addition to AGM’s inspections, the Board may provide AGM with identified violations by Board members, which have been approved by the Board for processing in accordance with the Association’s Compliance Policy.</p>
   </div>
+  <div class="sp-s"></div>
+  <div class="pad"><div class="note">Compliance inspections are performed weekly and include observation of front yards, visible side yards, exterior of home, and parking. Following the inspection, a warning letter will be issued, and the violation will then be processed in compliance with the enclosed compliance procedure.</div></div>
+  <div class="sp-m"></div>
+  <div class="pad cells">
+    <div class="cell"><div class="k">Review<i>01</i></div><h4>Open Violation Records</h4><p>Review open violation records to maintain an accurate picture of the active compliance pipeline between inspections.</p></div>
+    <div class="cell"><div class="k">Verification<i>02</i></div><h4>Compliance Status Confirmation</h4><p>Following the cure period, the Board will inform AGM whether the violation remains open or the Homeowner has achieved compliance.</p></div>
+    <div class="cell"><div class="k">Release<i>03</i></div><h4>Compliance Notice</h4><p>Upon approval from the Board, AGM will release approved violation notices to the Homeowner in accordance with the Compliance Policy. Assessment of fines and final enforcement decisions remain the sole responsibility of the Board.</p></div>
+    <div class="cell"><div class="k">Tracking &amp; Closure<i>04</i></div><h4>Log Updates &amp; Compliance Confirmation</h4><p>The Board will update the violation log to reflect either confirmed compliance and closure, or that the violation remains open and is being escalated under the Compliance Policy.</p></div>
+  </div>
+  <div class="sp-l"></div>
+  <div class="pad"><div class="fac-photos">
+    <div class="tile"><img src="img/juneau.jpg" alt="Juneau, AK" /></div>
+    <div class="tile"><img src="img/queen-anne.jpg" alt="Queen Anne, Seattle WA" /></div>
+  </div></div>
 
+  <div class="end"></div>
   <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>04A · Compliance</span></div>
 </section>
 
@@ -358,7 +349,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   <div class="sp-l"></div>
   <div class="pad"><div class="fac-photos">
     <div class="tile"><img src="img/marysville.jpg" alt="Marysville, WA" /></div>
-    <div class="tile"><img src="img/queen-anne.jpg" alt="Queen Anne, Seattle WA" /></div>
+    <div class="tile"><img src="img/bellevue.jpg" alt="Bellevue, WA" /></div>
   </div></div>
 
   <div class="end"></div>
