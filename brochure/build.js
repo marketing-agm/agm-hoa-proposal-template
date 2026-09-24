@@ -8,9 +8,9 @@ const path = require('path');
   await page.goto('file://' + path.join(__dirname, 'agm-hoa-services-brochure.html'), { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   const overflow = await page.$$eval('.page', ps => ps.map((p, i) => {
-    const last = [...p.children].pop().getBoundingClientRect().bottom - p.getBoundingClientRect().top;
-    const kids = [...p.children].reduce((h, c) => h + c.getBoundingClientRect().height, 0);
-    return `page ${i + 1}: content ${Math.round(kids)}px / ${Math.round(p.clientHeight)}px`;
+    const spare = [...p.querySelectorAll(':scope > .sp-s, :scope > .sp-m, :scope > .sp-l, :scope > .end')]
+      .reduce((h, el) => h + el.getBoundingClientRect().height - parseFloat(getComputedStyle(el).flexBasis), 0);
+    return `page ${i + 1}: ${p.scrollHeight > p.clientHeight ? 'OVERFLOW by ' + (p.scrollHeight - p.clientHeight) + 'px' : Math.round(spare) + 'px spare'}`;
   }));
   console.log(overflow.join('\n'));
   await page.pdf({ path: path.join(__dirname, 'AGM-HOA-Services-Penny-Lane.pdf'), preferCSSPageSize: true, printBackground: true });

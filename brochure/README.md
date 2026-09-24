@@ -1,6 +1,6 @@
 # AGM HOA Services — Brochure (PDF)
 
-Four-page US Letter brochure built from the HOA micro-site copy, with all fees removed. The design
+Five-page US Letter brochure built from the HOA micro-site copy, with all fees removed. The design
 follows the AGM generic services flyer: black hero, periwinkle blue accents, a light serif paired
 with tracked sans-serif labels.
 
