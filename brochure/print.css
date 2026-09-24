@@ -1,0 +1,87 @@
+/* ============================================================
+   AGM HOA SERVICES — PRINT LAYER
+   Applied on top of index.html's own stylesheet by build.js.
+   Turns each proposal page into one fixed landscape sheet with
+   the same top bar, left rail, and content column as the site.
+   ============================================================ */
+@import url("fonts/fonts.css");
+
+@page{size:1600px 1000px; margin:0;}
+:root{
+  --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sheet-w:1600px; --sheet-h:1000px; --hdr:58px;
+}
+html,body{background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+body{margin:0;}
+
+/* Instrument Serif ships in a single (400) weight */
+h1,h2,h3,h4,
+.rail-title,.sec-head h3,.metric .m-value,.cell::after{font-weight:400 !important;}
+.rail-title{font-size:56px; line-height:1.0; letter-spacing:-.005em;}
+.sec-head h3{font-size:26px; letter-spacing:0;}
+.metric .m-value{font-size:40px; letter-spacing:0;}
+.cell::after{font-size:19px;}
+
+/* ---------- sheet ---------- */
+.sheet{width:var(--sheet-w); height:var(--sheet-h); overflow:hidden; position:relative; display:flex; flex-direction:column; background:var(--bg); break-after:page; page-break-after:always;}
+.sheet:last-child{break-after:auto; page-break-after:auto;}
+.sheet .topbar{position:relative; backdrop-filter:none; background:var(--bg);}
+.sheet .topbar-inner{min-height:var(--hdr); padding:8px 24px;}
+.sheet .nav-link{cursor:default;}
+.sheet .shell{flex:1 1 auto; min-height:0; grid-template-columns:var(--rail-w) minmax(0,1fr);}
+.sheet .rail-stick{position:relative; top:0; height:100%; overflow:hidden;}
+.sheet .rail-watermark span{font-size:560px;}
+.sheet .main{min-height:0;}
+.sheet .content{padding:40px 64px 34px; display:flex; flex-direction:column; min-height:0;}
+.sheet .content-inner{width:100%; max-width:1040px; transform-origin:top left;}
+
+/* static print: no motion, everything visible */
+.page{display:block !important; animation:none !important;}
+.reveal,.cellgrid.reveal > .cell{opacity:1 !important; transform:none !important; transition:none !important;}
+.timeline-fill{width:80% !important; transition:none !important;}
+.cell::before{display:none;}
+
+/* tighter print rhythm (desktop spacing is tuned for scrolling) */
+.block{margin-bottom:40px;}
+.lead{margin-bottom:26px;}
+.statute-note{margin-bottom:26px;}
+.sec-head{margin-bottom:20px; padding-bottom:12px;}
+.cell{padding:26px 34px 28px;}
+.cell::after{top:24px; right:30px;}
+.kicker{margin-bottom:12px;}
+.cell-title{margin-bottom:10px;}
+.pills{margin-top:20px; gap:8px;}
+.sub-note{margin-top:18px; padding-top:14px;}
+.highlight{margin-top:26px; padding:24px 30px;}
+.feature-role{padding:32px 40px;}
+.metric{padding:24px 26px;}
+.footprint{margin-top:26px; padding-top:20px;}
+
+/* closing footer on the last sheet */
+.sheet .site-footer{padding:22px 64px; flex:0 0 auto;}
+.sheet .sf-brand .sf-logo{height:30px;}
+
+/* ============================================================
+   COVER — mirrors the site's cover / access screen
+   ============================================================ */
+.cover{background:var(--bg); padding:34px;}
+.cv-sheet{flex:1; background:#fff; border:1px solid var(--line-strong); border-radius:2px; display:grid; grid-template-rows:auto 1fr auto; box-shadow:0 1px 2px rgba(10,37,64,.03), 0 18px 50px rgba(10,37,64,.06); overflow:hidden;}
+.cv-head{display:flex; align-items:center; justify-content:space-between; padding:30px 56px; border-bottom:1px solid var(--line);}
+.cv-head .cv-eyebrow{font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-55);}
+.cv-head img{display:block; height:36px; width:auto;}
+.cv-body{display:grid; grid-template-columns:1.32fr 1fr; min-height:0;}
+.cv-left{padding:70px 64px; display:flex; flex-direction:column; justify-content:center;}
+.cv-title{font-family:var(--serif); font-weight:400; font-size:84px; line-height:1.0; color:var(--ink); margin:0 0 14px;}
+.cv-prop{font-family:var(--serif); font-weight:400; font-size:40px; line-height:1.15; color:var(--accent-2); margin:0;}
+.cv-inside{margin-top:48px; padding-top:28px; border-top:1px solid var(--line);}
+.cv-inside .cv-label{font-size:10.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-55); margin-bottom:18px;}
+.cv-inside ul{display:grid; grid-template-columns:1fr 1fr; gap:13px 30px;}
+.cv-inside li{font-size:14px; color:var(--ink-80); display:flex; align-items:baseline; gap:10px; line-height:1.35;}
+.cv-inside li::before{content:""; flex:0 0 auto; width:5px; height:5px; border-radius:50%; background:var(--accent); transform:translateY(-2px);}
+.cv-right{position:relative; overflow:hidden; background:var(--accent-2); color:#fff; display:flex; flex-direction:column; justify-content:center; padding:70px 60px;}
+.cv-right .rail-watermark span{font-size:620px; color:rgba(255,255,255,0.12);}
+.cv-right .cv-lead{position:relative; z-index:1; font-size:17px; line-height:1.7; color:rgba(255,255,255,0.95); margin:0; max-width:40ch;}
+.cv-right .rail-label{position:relative; z-index:1; margin-bottom:22px; color:#fff;}
+.cv-foot{display:flex; align-items:center; justify-content:space-between; padding:22px 56px; border-top:1px solid var(--line);}
+.cv-foot .cv-contact{font-size:12.5px; color:var(--accent); font-variant-numeric:tabular-nums;}
