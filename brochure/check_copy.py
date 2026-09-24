@@ -7,6 +7,7 @@ def txt(s):
 raw=open('index.html').read()
 src=txt(raw)+' '+html.unescape(raw)  # include JS rail leads
 src=re.sub(r'\s+',' ',src).replace(' — ',', ').replace(' &mdash; ',', ')
+src=src.replace('Property Manager','Community Association Manager')  # role renamed for the brochure
 b=txt(open('brochure/agm-hoa-services-brochure.html').read())
 allowed={'AGM HOA Services','Penny Lane on 170th Ave NE','AGM Real Estate Group, LLC','agmrealestategroup.com','206.622.8600','12330 Northup Way, Bellevue, WA 98005'}
 bad=set()

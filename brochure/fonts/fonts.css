@@ -1,4 +1,4 @@
 /* Google Fonts (OFL), latin subset, self-hosted so the PDF renders offline. */
 @font-face{font-family:'Inter';font-style:normal;font-weight:300 700;src:url(Inter.woff2) format('woff2')}
-@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;src:url(InstrumentSerif.woff2) format('woff2')}
-@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;src:url(InstrumentSerif-Italic.woff2) format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;src:url(DMSerifDisplay.woff2) format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:italic;font-weight:400;src:url(DMSerifDisplay-Italic.woff2) format('woff2')}
