@@ -145,6 +145,13 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
 .back-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:16px}
 .back .ct{font-size:11px;line-height:1.8;color:var(--on-dark)}
 .back .qr{width:72px;height:72px}
+/* community address line (cover + back); hidden when a build sets none */
+.addr{font-size:12px;line-height:1.5;color:var(--on-dark-2);margin-top:8px;letter-spacing:.01em}
+.addr:empty{display:none}
+/* back cover: tighten slightly to make room for an address line */
+.back:has(.addr:not(:empty)) .back-title{margin-top:18px}
+.back .addr{margin-top:4px}
+.back .addr:not(:empty) ~ .back-row{margin-top:8px}
 /* ---------- footers ---------- */
 .foot{padding:14px var(--gx);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);font:600 7.6px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .foot b{color:var(--ink)}
@@ -163,7 +170,8 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   <header class="hero">
     <div class="hero-top"><span class="co">AGM Real Estate Group, LLC</span><img src="../assets/agm-logo-white.svg" alt="AGM Real Estate Group" /></div>
     <h1>AGM HOA Services</h1>
-    <div class="prop">Penny Lane on 170th Ave NE</div>
+    <div class="prop community">Penny Lane on 170th Ave NE</div>
+    <div class="addr"></div>
     <div class="about">
       <div class="lbl">About AGM</div>
       <p>Established in 1998, AGM Real Estate Group has grown into a full-service real estate firm providing institutional-grade management, investment, and development services across the Pacific Northwest.</p>
@@ -189,7 +197,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   </div>
 
   <div class="end"></div>
-  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>01 · About AGM</span></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; <span class="community">Penny Lane on 170th Ave NE</span></span><span>01 · About AGM</span></div>
 </section>
 
 <!-- =========================== PAGE 2 · ABOUT (ASSETS) + MANAGEMENT =========================== -->
@@ -237,7 +245,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   </div>
 
   <div class="end"></div>
-  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>01 · About AGM &nbsp;·&nbsp; 02 · Management</span></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; <span class="community">Penny Lane on 170th Ave NE</span></span><span>01 · About AGM &nbsp;·&nbsp; 02 · Management</span></div>
 </section>
 
 <!-- =========================== PAGE 3 · GOVERNANCE =========================== -->
@@ -264,7 +272,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   <div class="pad"><div class="callout"><div class="lbl">Governance Outcome</div><p>Organized governance, informed decision-making, and continuity of records under Board direction</p></div></div>
 
   <div class="end"></div>
-  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>03 · Governance</span></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; <span class="community">Penny Lane on 170th Ave NE</span></span><span>03 · Governance</span></div>
 </section>
 
 <!-- =========================== PAGE 4 · FINANCIALS =========================== -->
@@ -295,7 +303,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   </div></div>
 
   <div class="end"></div>
-  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>04 · Financials</span></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; <span class="community">Penny Lane on 170th Ave NE</span></span><span>04 · Financials</span></div>
 </section>
 
 <!-- =========================== PAGE 5 · INTERIM COMPLIANCE REVIEW =========================== -->
@@ -321,7 +329,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   </div></div>
 
   <div class="end"></div>
-  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>04A · Compliance</span></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; <span class="community">Penny Lane on 170th Ave NE</span></span><span>04A · Compliance</span></div>
 </section>
 
 <!-- =========================== PAGE 6 · FACILITIES =========================== -->
@@ -353,7 +361,7 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   </div></div>
 
   <div class="end"></div>
-  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; Penny Lane on 170th Ave NE</span><span>05 · Facilities</span></div>
+  <div class="foot"><span><b>AGM HOA Services</b> &nbsp;·&nbsp; <span class="community">Penny Lane on 170th Ave NE</span></span><span>05 · Facilities</span></div>
 </section>
 
 <!-- =========================== PAGE 7 · TECHNOLOGY =========================== -->
@@ -382,7 +390,8 @@ body{font-family:var(--sans);color:var(--body);font-weight:400;-webkit-print-col
   <div class="back">
     <div class="back-top"><span class="co">AGM Real Estate Group, LLC</span><img src="../assets/agm-logo-white.svg" alt="AGM Real Estate Group" /></div>
     <div class="back-title">AGM HOA Services</div>
-    <div class="back-prop">Penny Lane on 170th Ave NE</div>
+    <div class="back-prop community">Penny Lane on 170th Ave NE</div>
+    <div class="addr"></div>
     <div class="back-row">
       <div class="ct">agmrealestategroup.com<br/>206.622.8600<br/>12330 Northup Way, Bellevue, WA 98005</div>
       <div class="qr"><img src="qr.svg" alt="QR code to agmrealestategroup.com" /></div>

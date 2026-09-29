@@ -9,7 +9,7 @@ src=txt(raw)+' '+html.unescape(raw)  # include JS rail leads
 src=re.sub(r'\s+',' ',src).replace(' — ',', ').replace(' &mdash; ',', ')
 src=src.replace('Property Manager','Community Association Manager')  # role renamed for the brochure
 b=txt(open('brochure/agm-hoa-services-brochure.html').read())
-allowed={'AGM HOA Services','Penny Lane on 170th Ave NE','AGM Real Estate Group, LLC','agmrealestategroup.com','206.622.8600','12330 Northup Way, Bellevue, WA 98005'}
+allowed={'AGM HOA Services','Penny Lane on 170th Ave NE','Westwind Condominium Owners Association','101115 NE 62nd Street Kirkland, WA 98033','AGM Real Estate Group, LLC','agmrealestategroup.com','206.622.8600','12330 Northup Way, Bellevue, WA 98005'}
 bad=set()
 for line in b.split('\n'):
     for frag in re.split(r'\s*[·|]\s*',line.strip()):
